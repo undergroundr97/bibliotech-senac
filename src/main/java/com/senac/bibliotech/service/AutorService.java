@@ -1,5 +1,6 @@
 package com.senac.bibliotech.service;
 
+import com.senac.bibliotech.dto.AutorRequest;
 import com.senac.bibliotech.model.Autor;
 import com.senac.bibliotech.repository.AutorRepository;
 
@@ -23,7 +24,8 @@ public class AutorService {
         return autorRepository.findById(id);
     }
 
-    public Autor saveAutor(Autor autor){
+    public Autor saveAutor(AutorRequest autorRequest){
+        Autor autor = new Autor(null, autorRequest.nome());
         return autorRepository.save(autor);
     }
 
@@ -31,5 +33,8 @@ public class AutorService {
         autorRepository.deleteById(id);
     }
 
+    public boolean existsById(Long id){
+        return autorRepository.existsById(id);
+    }
 
 }

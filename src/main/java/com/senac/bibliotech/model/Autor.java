@@ -19,9 +19,15 @@ public class Autor {
     private String nome;
 
     @OneToMany(mappedBy = "autor")
+
     private List<Livro> livros = new ArrayList<>();
 
     public Autor() {
+    }
+
+    public Autor(Long id, String nome) {
+        this.id = id;
+        this.nome = nome;
     }
 
     public Autor(Long id, String nome, List<Livro> livros) {
