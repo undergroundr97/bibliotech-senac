@@ -1,6 +1,7 @@
 package com.senac.bibliotech.service;
 
 import com.senac.bibliotech.dto.AutorRequest;
+import com.senac.bibliotech.mapper.AutorMapper;
 import com.senac.bibliotech.model.Autor;
 import com.senac.bibliotech.repository.AutorRepository;
 
@@ -10,9 +11,11 @@ import java.util.Optional;
 public class AutorService {
 
     private final AutorRepository autorRepository;
+    private final AutorMapper autorMapper;
 
-    public AutorService(AutorRepository autorRepository) {
+    public AutorService(AutorRepository autorRepository, AutorMapper autorMapper) {
         this.autorRepository = autorRepository;
+        this.autorMapper = autorMapper;
     }
 
 
@@ -42,6 +45,9 @@ public class AutorService {
     public Autor updateAutor(Long id, AutorRequest autorRequest){
         Autor autor = findById(id);
 
+        autorMapper.updateAutor(autorRequest, autor);
+
+        return autorRepository.save(autor);
 
     }
 

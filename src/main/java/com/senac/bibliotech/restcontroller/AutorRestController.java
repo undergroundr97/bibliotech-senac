@@ -6,7 +6,11 @@ import com.senac.bibliotech.model.Autor;
 import com.senac.bibliotech.service.AutorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -26,17 +30,20 @@ public class AutorRestController {
 
     @PostMapping
     public ResponseEntity<Autor> postAutor(@RequestBody AutorRequest autorRequest){
-        return ResponseEntity.ok(autorService.saveAutor(autorRequest));
+
+        Autor savedAutor = autorService.saveAutor(autorRequest);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedAutor)
+                .toUri();
+
+        return ResponseEntity.created(uri).body(savedAutor);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Autor> getAutorById(@PathVariable Long id){
-        if(autorService.existsById(id)){
-            Autor autor = autorService.findById(id).orElseThrow();
-            return ResponseEntity.ok(autor);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(autorService.findById(id));
     }
 
     @DeleteMapping("/{id}")
@@ -48,6 +55,12 @@ public class AutorRestController {
     @PatchMapping("/{id}")
     public ResponseEntity<Autor> patchAutor(@PathVariable Long id,
                                             @RequestBody AutorRequest autorRequest){
-        autorService.
+        return ResponseEntity.ok(autorService.updateAutor(id, autorRequest));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Autor> putAutor(@PathVariable Long id,
+                                          @RequestBody AutorRequest autorRequest){
+        return ResponseEntity.ok(autorService.updateAutor(id, autorRequest));
     }
 }
