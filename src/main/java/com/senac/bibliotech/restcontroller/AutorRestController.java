@@ -45,8 +45,9 @@ public class AutorRestController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping
-    public ResponseEntity<Autor> patchAutor(@RequestBody AutorRequest autorRequest){
+    @PatchMapping("/{id}")
+    public ResponseEntity<Autor> patchAutor(@PathVariable Long id,
+                                            @RequestBody AutorRequest autorRequest){
         autorService.
     }
 }

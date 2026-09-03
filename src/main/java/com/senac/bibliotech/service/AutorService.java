@@ -20,8 +20,10 @@ public class AutorService {
         return autorRepository.findAll();
     }
 
-    public Optional<Autor> findById(Long id){
-        return autorRepository.findById(id);
+    public Autor findById(Long id){
+        return autorRepository
+                .findById(id)
+                .orElseThrow();
     }
 
     public Autor saveAutor(AutorRequest autorRequest){
@@ -35,6 +37,12 @@ public class AutorService {
 
     public boolean existsById(Long id){
         return autorRepository.existsById(id);
+    }
+
+    public Autor updateAutor(Long id, AutorRequest autorRequest){
+        Autor autor = findById(id);
+
+
     }
 
 }
