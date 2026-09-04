@@ -1,16 +1,17 @@
 package com.senac.bibliotech.categoria.api;
 
 
+import com.senac.bibliotech.categoria.api.request.CategoriaRequest;
 import com.senac.bibliotech.categoria.api.request.CategoriaResponse;
 import com.senac.bibliotech.categoria.model.Categoria;
 import com.senac.bibliotech.categoria.service.CategoriaService;
+import jakarta.validation.Valid;
 import org.mapstruct.MappingTarget;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestControllerAdvice
@@ -24,7 +25,7 @@ public class CategoriaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Categoria>> getAllCategorias(){
+    public ResponseEntity<List<CategoriaResponse>> getAllCategorias(){
         return ResponseEntity.ok(categoriaService.findAllCategorias());
     }
 
@@ -34,6 +35,23 @@ public class CategoriaController {
     }
 
     @PostMapping
-    public ResponseEntity<CategoriaResponse>
+    public ResponseEntity<CategoriaResponse> postCategoria(@Valid @RequestBody CategoriaRequest categoriaRequest){
+
+        CategoriaResponse categoriaResponse = categoriaService.saveCategoria(categoriaRequest);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(categoriaResponse.id())
+                .toUri();
+
+        return ResponseEntity.created(uri).body(categoriaResponse);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoriaResponse> putCategoria(@PathVariable Long id,
+                                                          @Valid @RequestBody CategoriaRequest categoriaRequest){
+        return ResponseEntity.ok(categoriaService.updateCategoria(id, categoriaRequest));
+    }
+
 
 }

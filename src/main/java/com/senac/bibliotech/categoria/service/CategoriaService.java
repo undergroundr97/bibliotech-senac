@@ -34,21 +34,29 @@ public class CategoriaService {
         return categoriaMapper.toResponse(categoria);
     }
 
-    public List<Categoria> findAllCategorias(){
-        return categoriaRepository.findAll();
+    public List<CategoriaResponse> findAllCategorias(){
+        return categoriaRepository
+                .findAll()
+                .stream()
+                .map(categoriaMapper::toResponse)
+                .toList();
     }
 
-    public Categoria saveCategoria(CategoriaRequest categoriaRequest){
-
+    public CategoriaResponse saveCategoria(CategoriaRequest categoriaRequest){
         Categoria categoria = categoriaMapper.toCategoria(categoriaRequest);
-        return categoriaRepository.save(categoria);
 
+        Categoria categoriaSaved = categoriaRepository.save(categoria);
+
+        return categoriaMapper.toResponse(categoriaSaved);
     }
 
-    public Categoria updateCategoria(Long id, CategoriaRequest categoriaRequest){
+    public CategoriaResponse updateCategoria(Long id, CategoriaRequest categoriaRequest){
         Categoria categoria = findCategoriaEntityById(id);
         categoriaMapper.updateCategoria(categoriaRequest, categoria);
-        return categoriaRepository.save(categoria);
+        Categoria categoriaSalva = categoriaRepository.save(categoria);
+
+        return categoriaMapper.toResponse(categoriaSalva);
+
     }
 
     public void deleteCategoriaById(Long id){

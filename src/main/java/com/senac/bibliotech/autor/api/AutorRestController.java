@@ -33,7 +33,7 @@ public class AutorRestController {
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(savedAutor)
+                .buildAndExpand(savedAutor.getId())
                 .toUri();
 
         return ResponseEntity.created(uri).body(savedAutor);
