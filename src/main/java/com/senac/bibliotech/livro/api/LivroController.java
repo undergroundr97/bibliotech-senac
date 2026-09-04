@@ -15,12 +15,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/livros")
-public class LivroRestController {
+public class LivroController {
 
 
     private final LivroService livroService;
 
-    public LivroRestController(LivroService livroService) {
+    public LivroController(LivroService livroService) {
         this.livroService = livroService;
     }
 
@@ -57,6 +57,13 @@ public class LivroRestController {
     @DeleteMapping
     public ResponseEntity<Void> deleteLivroById(
             @PathVariable Long id){
+        livroService.deleteLivroById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<LivroResponse> patchLivro(@PathVariable Long id,
+                                                    @Valid @RequestBody LivroRequest livroRequest){
 
     }
 
