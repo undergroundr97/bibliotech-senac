@@ -1,11 +1,8 @@
-package com.senac.bibliotech.restcontroller;
+package com.senac.bibliotech.livro.api;
 
 
-import com.senac.bibliotech.dto.LivroRequest;
-import com.senac.bibliotech.model.Livro;
-import com.senac.bibliotech.repository.LivroRepository;
-import com.senac.bibliotech.service.LivroService;
-import jakarta.validation.Valid;
+import com.senac.bibliotech.livro.domain.Livro;
+import com.senac.bibliotech.livro.service.LivroService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

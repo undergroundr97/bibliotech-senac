@@ -1,4 +1,4 @@
-package com.senac.bibliotech.dto;
+package com.senac.bibliotech.livro.api.request;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;

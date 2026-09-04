@@ -1,10 +1,9 @@
-package com.senac.bibliotech.model;
+package com.senac.bibliotech.livro.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.senac.bibliotech.autor.domain.Autor;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 

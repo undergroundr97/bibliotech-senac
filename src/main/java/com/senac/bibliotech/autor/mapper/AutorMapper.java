@@ -1,9 +1,8 @@
-package com.senac.bibliotech.mapper;
+package com.senac.bibliotech.autor.mapper;
 
 
-import com.senac.bibliotech.dto.AutorRequest;
-import com.senac.bibliotech.model.Autor;
-import com.senac.bibliotech.model.Livro;
+import com.senac.bibliotech.autor.api.request.AutorRequest;
+import com.senac.bibliotech.autor.domain.Autor;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

@@ -1,13 +1,12 @@
-package com.senac.bibliotech.service;
+package com.senac.bibliotech.autor.service;
 
-import com.senac.bibliotech.dto.AutorRequest;
-import com.senac.bibliotech.mapper.AutorMapper;
-import com.senac.bibliotech.model.Autor;
-import com.senac.bibliotech.repository.AutorRepository;
+import com.senac.bibliotech.autor.api.request.AutorRequest;
+import com.senac.bibliotech.autor.mapper.AutorMapper;
+import com.senac.bibliotech.autor.domain.Autor;
+import com.senac.bibliotech.autor.repository.AutorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AutorService {

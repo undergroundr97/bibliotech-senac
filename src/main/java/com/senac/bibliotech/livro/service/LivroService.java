@@ -1,9 +1,8 @@
-package com.senac.bibliotech.service;
+package com.senac.bibliotech.livro.service;
 
 
-import com.senac.bibliotech.dto.LivroRequest;
-import com.senac.bibliotech.model.Livro;
-import com.senac.bibliotech.repository.LivroRepository;
+import com.senac.bibliotech.livro.domain.Livro;
+import com.senac.bibliotech.livro.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

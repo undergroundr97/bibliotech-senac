@@ -1,10 +1,10 @@
 package com.senac.bibliotech.configuration;
 
 
-import com.senac.bibliotech.model.Autor;
-import com.senac.bibliotech.model.Livro;
-import com.senac.bibliotech.repository.AutorRepository;
-import com.senac.bibliotech.repository.LivroRepository;
+import com.senac.bibliotech.autor.domain.Autor;
+import com.senac.bibliotech.livro.domain.Livro;
+import com.senac.bibliotech.autor.repository.AutorRepository;
+import com.senac.bibliotech.livro.repository.LivroRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

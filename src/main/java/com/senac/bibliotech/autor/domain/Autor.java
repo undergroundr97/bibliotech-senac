@@ -1,6 +1,7 @@
-package com.senac.bibliotech.model;
+package com.senac.bibliotech.autor.domain;
 
 
+import com.senac.bibliotech.livro.domain.Livro;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

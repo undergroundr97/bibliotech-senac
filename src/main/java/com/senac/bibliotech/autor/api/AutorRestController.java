@@ -1,14 +1,12 @@
-package com.senac.bibliotech.restcontroller;
+package com.senac.bibliotech.autor.api;
 
 
-import com.senac.bibliotech.dto.AutorRequest;
-import com.senac.bibliotech.model.Autor;
-import com.senac.bibliotech.service.AutorService;
+import com.senac.bibliotech.autor.api.request.AutorRequest;
+import com.senac.bibliotech.autor.domain.Autor;
+import com.senac.bibliotech.autor.service.AutorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.util.UriBuilder;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
