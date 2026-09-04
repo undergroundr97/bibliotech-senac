@@ -13,11 +13,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/autor")
-public class AutorRestController {
+public class AutorController {
 
     private final AutorService autorService;
 
-    public AutorRestController(AutorService autorService) {
+    public AutorController(AutorService autorService) {
         this.autorService = autorService;
     }
 
