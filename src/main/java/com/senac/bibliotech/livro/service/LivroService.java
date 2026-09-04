@@ -8,6 +8,7 @@ import com.senac.bibliotech.categoria.api.request.CategoriaRequest;
 import com.senac.bibliotech.categoria.model.Categoria;
 import com.senac.bibliotech.categoria.repository.CategoriaRepository;
 import com.senac.bibliotech.categoria.service.CategoriaService;
+import com.senac.bibliotech.livro.api.request.LivroPatchRequest;
 import com.senac.bibliotech.livro.api.request.LivroRequest;
 import com.senac.bibliotech.livro.api.response.LivroResponse;
 import com.senac.bibliotech.livro.domain.Livro;
@@ -80,6 +81,23 @@ public class LivroService {
         return livroMapper
                 .toResponse(savedLivro);
 
+
+    }
+
+
+    public LivroResponse patchLivro(Long id, LivroPatchRequest livroPatchRequest){
+        Livro livro = findLivroEntityById(id);
+        if(livroPatchRequest.autorId() != null){
+            livro.setAutor(autorService.findById(livroPatchRequest.autorId()));
+        }
+        if(livroPatchRequest.categoriaId() != null){
+            livro.setCategoria(categoriaService.findCategoriaEntityById(livroPatchRequest.categoriaId()));
+        }
+        livroMapper.patchLivro(livroPatchRequest, livro);
+        Livro savedLivro = livroRepository.save(livro);
+
+        return livroMapper
+                .toResponse(savedLivro);
 
     }
 }

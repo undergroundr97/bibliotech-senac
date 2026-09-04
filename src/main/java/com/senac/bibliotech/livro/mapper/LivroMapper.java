@@ -2,6 +2,7 @@ package com.senac.bibliotech.livro.mapper;
 
 
 import com.senac.bibliotech.categoria.api.response.CategoriaResponse;
+import com.senac.bibliotech.livro.api.request.LivroPatchRequest;
 import com.senac.bibliotech.livro.api.request.LivroRequest;
 import com.senac.bibliotech.livro.api.response.LivroResponse;
 import com.senac.bibliotech.livro.domain.Livro;
@@ -28,5 +29,12 @@ public interface LivroMapper {
 
 
 
+    @BeanMapping(
+            nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
+    )
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "autor", ignore = true)
+    @Mapping(target = "categoria", ignore = true)
+    void patchLivro(LivroPatchRequest livroPatchRequest, @MappingTarget Livro livro);
 
 }
