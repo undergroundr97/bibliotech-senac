@@ -1,11 +1,13 @@
 package com.senac.bibliotech.livro.api;
 
 
+import com.senac.bibliotech.livro.api.request.LivroPatchRequest;
 import com.senac.bibliotech.livro.api.request.LivroRequest;
 import com.senac.bibliotech.livro.api.response.LivroResponse;
 import com.senac.bibliotech.livro.domain.Livro;
 import com.senac.bibliotech.livro.service.LivroService;
 import jakarta.validation.Valid;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -62,10 +64,18 @@ public class LivroController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<LivroResponse> patchLivro(@PathVariable Long id,
+    public ResponseEntity<LivroResponse> putLivro(@PathVariable Long id,
                                                     @Valid @RequestBody LivroRequest livroRequest){
 
         return ResponseEntity.ok(livroService.putLivro(id, livroRequest));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<LivroResponse> patchLivro(
+            @PathVariable Long id,
+            @RequestBody LivroPatchRequest livroPatchRequest
+            ){
+        return ResponseEntity.ok(livroService.patchLivro(id, livroPatchRequest));
     }
 
 }
