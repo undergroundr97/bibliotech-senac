@@ -28,12 +28,12 @@ public class LivroRestController {
         return ResponseEntity.ok(livroService.findAll());
     }
 
-    @PostMapping
-    public ResponseEntity<Livro> postLivr(
-            @Valid
-            @RequestBody
-            LivroRequest livroRequest){
-
-    }
+//    @PostMapping
+//    public ResponseEntity<Livro> postLivr(
+//            @Valid
+//            @RequestBody
+//            LivroRequest livroRequest){
+//
+//    }
 
 }

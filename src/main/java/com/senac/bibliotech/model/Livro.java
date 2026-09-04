@@ -1,6 +1,7 @@
 package com.senac.bibliotech.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,8 @@ public class Livro {
     @Column(name = "isbn", nullable = false)
     private String isbn;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "autor_id")
     private Autor autor;
 
@@ -32,6 +34,13 @@ public class Livro {
     }
 
     public Livro() {
+    }
+
+    public Livro(Long id, String titulo, String isbn, Autor autor) {
+        this.id = id;
+        this.titulo = titulo;
+        this.isbn = isbn;
+        this.autor = autor;
     }
 
     public Long getId() {

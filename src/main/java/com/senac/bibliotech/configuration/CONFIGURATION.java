@@ -5,6 +5,7 @@ import com.senac.bibliotech.model.Autor;
 import com.senac.bibliotech.model.Livro;
 import com.senac.bibliotech.repository.AutorRepository;
 import com.senac.bibliotech.repository.LivroRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 @Configuration
 public class CONFIGURATION implements CommandLineRunner {
@@ -27,26 +29,51 @@ public class CONFIGURATION implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         String filePath = "src/main/java/com/senac/bibliotech/configuration/data/nomes.txt";
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
-
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line = br.readLine();
-
-            while(line != null){
+            while (line != null) {
 //                System.out.println(line);
                 String nome = line;
                 Autor autor = new Autor(null, nome);
                 autorRepository.save(autor);
                 line = br.readLine();
             }
-        }   catch (IOException e){
+        } catch (IOException e) {
             e.getMessage();
         }
 
 
-        for (int i = 0; i < 10 ; i++) {
-            Livro livro = new Livro(null, "titulo" + i, "isbn" + i);
-            livroRepository.save(livro);
+      populateLivros();
+
+    }
+
+    @Transactional
+    public void populateLivros(){
+        String booksPath = "src/main/java/com/senac/bibliotech/configuration/data/nomelivros.txt";
+
+        List<Autor> autores = autorRepository.findAll();
+
+        try(BufferedReader br = new BufferedReader(new FileReader(booksPath))){
+
+            String line = br.readLine();
+            while(line != null){
+
+                int randomNumber = (int) Math.floor(autores.size() * Math.random());
+
+                Autor autor = autores.get(randomNumber);
+
+                String[] stringSplit = line.split(",");
+
+                Livro livro = new Livro(null, stringSplit[0], stringSplit[1], autor);
+                livroRepository.save(livro);
+
+                line = br.readLine();
+            }
+
+        }catch (IOException e){
+            e.getMessage();
         }
+
     }
 
 
