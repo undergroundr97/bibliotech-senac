@@ -2,6 +2,7 @@ package com.senac.bibliotech.livro.api;
 
 
 import com.senac.bibliotech.livro.api.request.LivroRequest;
+import com.senac.bibliotech.livro.api.response.LivroResponse;
 import com.senac.bibliotech.livro.domain.Livro;
 import com.senac.bibliotech.livro.service.LivroService;
 import jakarta.validation.Valid;
@@ -47,6 +48,16 @@ public class LivroRestController {
 
     }
 
-    public
+    @GetMapping("/{id}")
+    public ResponseEntity<LivroResponse> getLivroById(
+            @PathVariable Long id){
+        return ResponseEntity.ok(livroService.findLivroById(id));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteLivroById(
+            @PathVariable Long id){
+
+    }
 
 }

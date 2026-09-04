@@ -9,6 +9,7 @@ import com.senac.bibliotech.categoria.model.Categoria;
 import com.senac.bibliotech.categoria.repository.CategoriaRepository;
 import com.senac.bibliotech.categoria.service.CategoriaService;
 import com.senac.bibliotech.livro.api.request.LivroRequest;
+import com.senac.bibliotech.livro.api.response.LivroResponse;
 import com.senac.bibliotech.livro.domain.Livro;
 import com.senac.bibliotech.livro.mapper.LivroMapper;
 import com.senac.bibliotech.livro.repository.LivroRepository;
@@ -45,6 +46,22 @@ public class LivroService {
         livro.setCategoria(categoria);
 
         return livroRepository.save(livro);
+    }
+
+
+    public Livro findLivroEntityById(Long id){
+        return livroRepository
+                .findById(id)
+                .orElseThrow();
+    }
+    public LivroResponse findLivroById(Long id){
+        Livro livro = findLivroEntityById(id);
+        return livroMapper.toResponse(livro);
+    }
+
+    public void deleteLivroById(Long id){
+        Livro livro = findLivroEntityById(id);
+        livroRepository.delete(livro);
     }
 
 }
