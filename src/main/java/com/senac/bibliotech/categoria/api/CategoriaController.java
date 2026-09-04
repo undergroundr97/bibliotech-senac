@@ -1,6 +1,7 @@
 package com.senac.bibliotech.categoria.api;
 
 
+import com.senac.bibliotech.categoria.api.request.CategoriaPatchRequest;
 import com.senac.bibliotech.categoria.api.request.CategoriaRequest;
 import com.senac.bibliotech.categoria.api.response.CategoriaResponse;
 import com.senac.bibliotech.categoria.service.CategoriaService;
@@ -14,7 +15,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestControllerAdvice
-@MappingTarget("/categoria")
+@RequestMapping("/categoria")
 public class CategoriaController {
 
     private final CategoriaService categoriaService;
@@ -54,8 +55,9 @@ public class CategoriaController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<CategoriaResponse> patchCategoria(@PathVariable Long id,
-                                                            @Valid @RequestBody CategoriaRequest categoriaRequest){
+                                                            @Valid @RequestBody CategoriaPatchRequest categoriaPatchRequest){
 
+        return ResponseEntity.ok(categoriaService.patchCategoria(categoriaPatchRequest, id));
     }
 
 }
