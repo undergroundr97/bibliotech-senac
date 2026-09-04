@@ -1,4 +1,4 @@
-package com.senac.bibliotech.categoria.api.request;
+package com.senac.bibliotech.categoria.api.response;
 
 public record CategoriaResponse(
         Long id,

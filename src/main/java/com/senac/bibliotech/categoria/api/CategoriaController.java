@@ -2,8 +2,7 @@ package com.senac.bibliotech.categoria.api;
 
 
 import com.senac.bibliotech.categoria.api.request.CategoriaRequest;
-import com.senac.bibliotech.categoria.api.request.CategoriaResponse;
-import com.senac.bibliotech.categoria.model.Categoria;
+import com.senac.bibliotech.categoria.api.response.CategoriaResponse;
 import com.senac.bibliotech.categoria.service.CategoriaService;
 import jakarta.validation.Valid;
 import org.mapstruct.MappingTarget;
@@ -53,5 +52,10 @@ public class CategoriaController {
         return ResponseEntity.ok(categoriaService.updateCategoria(id, categoriaRequest));
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<CategoriaResponse> patchCategoria(@PathVariable Long id,
+                                                            @Valid @RequestBody CategoriaRequest categoriaRequest){
+
+    }
 
 }
