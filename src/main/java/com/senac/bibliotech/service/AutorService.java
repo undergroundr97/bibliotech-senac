@@ -4,10 +4,12 @@ import com.senac.bibliotech.dto.AutorRequest;
 import com.senac.bibliotech.mapper.AutorMapper;
 import com.senac.bibliotech.model.Autor;
 import com.senac.bibliotech.repository.AutorRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class AutorService {
 
     private final AutorRepository autorRepository;
@@ -44,9 +46,7 @@ public class AutorService {
 
     public Autor updateAutor(Long id, AutorRequest autorRequest){
         Autor autor = findById(id);
-
         autorMapper.updateAutor(autorRequest, autor);
-
         return autorRepository.save(autor);
 
     }

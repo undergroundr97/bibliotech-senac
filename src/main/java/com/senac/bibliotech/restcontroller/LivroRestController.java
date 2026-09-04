@@ -1,13 +1,13 @@
 package com.senac.bibliotech.restcontroller;
 
 
+import com.senac.bibliotech.dto.LivroRequest;
 import com.senac.bibliotech.model.Livro;
 import com.senac.bibliotech.repository.LivroRepository;
 import com.senac.bibliotech.service.LivroService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +28,12 @@ public class LivroRestController {
         return ResponseEntity.ok(livroService.findAll());
     }
 
+    @PostMapping
+    public ResponseEntity<Livro> postLivr(
+            @Valid
+            @RequestBody
+            LivroRequest livroRequest){
+
+    }
 
 }
