@@ -1,6 +1,7 @@
 package com.senac.bibliotech.categoria.service;
 
 import com.senac.bibliotech.categoria.api.request.CategoriaRequest;
+import com.senac.bibliotech.categoria.api.request.CategoriaResponse;
 import com.senac.bibliotech.categoria.mapper.CategoriaMapper;
 import com.senac.bibliotech.categoria.model.Categoria;
 import com.senac.bibliotech.categoria.repository.CategoriaRepository;
@@ -21,9 +22,16 @@ public class CategoriaService {
     }
 
 
-    public Categoria findCategoriaById(Long id){
-        return categoriaRepository.findById(id)
+    public Categoria findCategoriaEntityById(Long id){
+        return categoriaRepository
+                .findById(id)
                 .orElseThrow();
+
+    }
+
+    public CategoriaResponse findCategoriaById(Long id){
+        Categoria categoria = findCategoriaEntityById(id);
+        return categoriaMapper.toResponse(categoria);
     }
 
     public List<Categoria> findAllCategorias(){
@@ -38,13 +46,13 @@ public class CategoriaService {
     }
 
     public Categoria updateCategoria(Long id, CategoriaRequest categoriaRequest){
-        Categoria categoria = findCategoriaById(id);
+        Categoria categoria = findCategoriaEntityById(id);
         categoriaMapper.updateCategoria(categoriaRequest, categoria);
         return categoriaRepository.save(categoria);
     }
 
     public void deleteCategoriaById(Long id){
-        Categoria categoria = findCategoriaById(id);
+        Categoria categoria = findCategoriaEntityById(id);
         categoriaRepository.deleteById(id);
     }
 
