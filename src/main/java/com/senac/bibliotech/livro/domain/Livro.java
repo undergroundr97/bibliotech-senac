@@ -3,12 +3,15 @@ package com.senac.bibliotech.livro.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.senac.bibliotech.autor.domain.Autor;
+import com.senac.bibliotech.categoria.model.Categoria;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Objects;
 
 @Entity
 @Table( name = "livros")
+@Data
 public class Livro {
 
     @Id
@@ -26,6 +29,11 @@ public class Livro {
     @JoinColumn(name = "autor_id")
     private Autor autor;
 
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
     public Livro(Long id, String titulo, String isbn) {
         this.id = id;
         this.titulo = titulo;
@@ -42,47 +50,5 @@ public class Livro {
         this.autor = autor;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Livro livro = (Livro) o;
-        return Objects.equals(id, livro.id) && Objects.equals(titulo, livro.titulo) && Objects.equals(isbn, livro.isbn);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, titulo, isbn);
-    }
 }
