@@ -64,9 +64,15 @@ public class LivroService {
         livroRepository.delete(livro);
     }
 
-    public LivroResponse putivro(Long id, LivroRequest livroRequest){
+    public LivroResponse putLivro(Long id, LivroRequest livroRequest){
         Livro livro = findLivroEntityById(id);
         livroMapper.putLivro(livroRequest, livro);
+
+        Autor autor = autorService.findById(livroRequest.autorId());
+        Categoria categoria = categoriaService.findCategoriaEntityById(livroRequest.categoriaId());
+
+        livro.setAutor(autor);
+        livro.setCategoria(categoria);
 
 
         Livro savedLivro = livroRepository.save(livro);

@@ -65,6 +65,7 @@ public class LivroController {
     public ResponseEntity<LivroResponse> patchLivro(@PathVariable Long id,
                                                     @Valid @RequestBody LivroRequest livroRequest){
 
+        return ResponseEntity.ok(livroService.putLivro(id, livroRequest));
     }
 
 }
