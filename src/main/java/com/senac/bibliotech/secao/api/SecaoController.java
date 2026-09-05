@@ -1,14 +1,13 @@
 package com.senac.bibliotech.secao.api;
 
 
+import com.senac.bibliotech.secao.api.dto.request.SecaoRequest;
 import com.senac.bibliotech.secao.api.dto.response.SecaoResponse;
 import com.senac.bibliotech.secao.domain.Secao;
 import com.senac.bibliotech.secao.service.SecaoService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +29,15 @@ public class SecaoController {
     @GetMapping
     public ResponseEntity<List<SecaoResponse>> findAllSecao(){
         return ResponseEntity.ok(secaoService.findAllSecao());
+    }
+
+    @PostMapping
+    public ResponseEntity<SecaoResponse> postSecao(
+            @Valid
+            @RequestBody
+            SecaoRequest secaoRequest
+                                                    ){
+
     }
 
 }
