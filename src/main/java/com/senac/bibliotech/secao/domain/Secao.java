@@ -16,11 +16,15 @@ public class Secao {
 
     @Column(name =  "nome")
     private String nome;
+
     @Column(name = "descricao")
     private String descricao;
+
     @Column(name =  "localizacao")
     private String localizacao;
 
+
+    @OneToMany
     private List<Livro> livrosSecao;
 
 
