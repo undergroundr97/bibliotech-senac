@@ -49,4 +49,9 @@ public class SecaoService {
                 .toResponse(savedSecao);
     }
 
+    public void deleteSecaoById(Long id){
+        Secao secao = findSecaoEntityById(id);
+        secaoRepository.delete(secao);
+    }
+
 }

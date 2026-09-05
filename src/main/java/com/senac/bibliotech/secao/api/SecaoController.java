@@ -49,4 +49,10 @@ public class SecaoController {
         return ResponseEntity.created(uri).body(secaoResponse);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSecaoById(@PathVariable Long id){
+        secaoService.deleteSecaoById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
