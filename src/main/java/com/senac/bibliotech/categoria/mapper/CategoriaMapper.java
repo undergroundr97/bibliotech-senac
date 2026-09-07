@@ -18,6 +18,6 @@ public interface CategoriaMapper {
     void putCategoria(CategoriaRequest categoriaRequest, @MappingTarget Categoria categoria);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void patchCategoria(CategoriaPatchRequest categoriaPatchRequest, @MappingTarget Categoria categoria)
+    void patchCategoria(CategoriaPatchRequest categoriaPatchRequest, @MappingTarget Categoria categoria);
 
 }
