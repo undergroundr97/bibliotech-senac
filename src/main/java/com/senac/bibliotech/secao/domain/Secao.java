@@ -1,6 +1,7 @@
 package com.senac.bibliotech.secao.domain;
 
 
+import com.senac.bibliotech.biblioteca.model.Biblioteca;
 import com.senac.bibliotech.exemplar.model.Exemplar;
 import com.senac.bibliotech.livro.domain.Livro;
 import jakarta.persistence.*;
@@ -31,6 +32,10 @@ public class Secao {
 
     @OneToMany(mappedBy = "secao")
     private List<Exemplar> exemplarList;
+
+    @ManyToOne
+    @JoinColumn(name = "biblioteca_id")
+    private Biblioteca biblioteca;
 
 
 
