@@ -1,6 +1,7 @@
 package com.senac.bibliotech.secao.domain;
 
 
+import com.senac.bibliotech.exemplar.model.Exemplar;
 import com.senac.bibliotech.livro.domain.Livro;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -28,8 +29,9 @@ public class Secao {
     private String localizacao;
 
 
-    @OneToMany
-    private List<Livro> livrosSecao;
+    @OneToMany(mappedBy = "secao")
+    private List<Exemplar> exemplarList;
+
 
 
 }

@@ -4,11 +4,13 @@ package com.senac.bibliotech.livro.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.senac.bibliotech.autor.domain.Autor;
 import com.senac.bibliotech.categoria.model.Categoria;
+import com.senac.bibliotech.exemplar.model.Exemplar;
 import com.senac.bibliotech.secao.domain.Secao;
 import com.senac.bibliotech.secao.service.SecaoService;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -35,6 +37,10 @@ public class Livro {
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+
+
+    @OneToMany(mappedBy = "livro")
+    private List<Exemplar> exemplarList;
 
 
     public Livro(Long id, String titulo, String isbn) {
