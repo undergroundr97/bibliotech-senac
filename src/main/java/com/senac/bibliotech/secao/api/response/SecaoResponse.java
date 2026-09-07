@@ -1,4 +1,4 @@
-package com.senac.bibliotech.secao.api.dto.response;
+package com.senac.bibliotech.secao.api.response;
 
 public record SecaoResponse(
         Long id,

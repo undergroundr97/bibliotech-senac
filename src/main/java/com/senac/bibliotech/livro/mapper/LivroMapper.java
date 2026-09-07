@@ -5,6 +5,7 @@ import com.senac.bibliotech.categoria.api.response.CategoriaResponse;
 import com.senac.bibliotech.livro.api.request.LivroPatchRequest;
 import com.senac.bibliotech.livro.api.request.LivroRequest;
 import com.senac.bibliotech.livro.api.response.LivroResponse;
+import com.senac.bibliotech.livro.api.response.LivroResumeResponse;
 import com.senac.bibliotech.livro.domain.Livro;
 import org.mapstruct.*;
 
@@ -36,5 +37,8 @@ public interface LivroMapper {
     @Mapping(target = "autor", ignore = true)
     @Mapping(target = "categoria", ignore = true)
     void patchLivro(LivroPatchRequest livroPatchRequest, @MappingTarget Livro livro);
+
+
+    LivroResumeResponse toResumeResponse(Livro livro);
 
 }

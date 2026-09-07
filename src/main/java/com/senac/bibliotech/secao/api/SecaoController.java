@@ -1,9 +1,8 @@
 package com.senac.bibliotech.secao.api;
 
 
-import com.senac.bibliotech.secao.api.dto.request.SecaoRequest;
-import com.senac.bibliotech.secao.api.dto.response.SecaoResponse;
-import com.senac.bibliotech.secao.domain.Secao;
+import com.senac.bibliotech.secao.api.request.SecaoRequest;
+import com.senac.bibliotech.secao.api.response.SecaoResponse;
 import com.senac.bibliotech.secao.service.SecaoService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,8 @@
 package com.senac.bibliotech.secao.service;
 
 
-import com.senac.bibliotech.secao.api.dto.request.SecaoRequest;
-import com.senac.bibliotech.secao.api.dto.response.SecaoResponse;
+import com.senac.bibliotech.secao.api.request.SecaoRequest;
+import com.senac.bibliotech.secao.api.response.SecaoResponse;
 import com.senac.bibliotech.secao.domain.Secao;
 import com.senac.bibliotech.secao.mapper.SecaoMapper;
 import com.senac.bibliotech.secao.repository.SecaoRepository;
@@ -21,7 +21,7 @@ public class SecaoService {
         this.secaoMapper = secaoMapper;
     }
 
-    private Secao findSecaoEntityById(Long id){
+    public Secao findSecaoEntityById(Long id){
         return secaoRepository
                 .findById(id)
                 .orElseThrow();

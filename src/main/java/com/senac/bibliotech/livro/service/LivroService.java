@@ -2,11 +2,8 @@ package com.senac.bibliotech.livro.service;
 
 
 import com.senac.bibliotech.autor.domain.Autor;
-import com.senac.bibliotech.autor.repository.AutorRepository;
 import com.senac.bibliotech.autor.service.AutorService;
-import com.senac.bibliotech.categoria.api.request.CategoriaRequest;
 import com.senac.bibliotech.categoria.model.Categoria;
-import com.senac.bibliotech.categoria.repository.CategoriaRepository;
 import com.senac.bibliotech.categoria.service.CategoriaService;
 import com.senac.bibliotech.livro.api.request.LivroPatchRequest;
 import com.senac.bibliotech.livro.api.request.LivroRequest;

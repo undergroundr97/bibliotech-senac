@@ -1,4 +1,4 @@
-package com.senac.bibliotech.secao.api.dto.request;
+package com.senac.bibliotech.secao.api.request;
 
 import jakarta.validation.constraints.NotBlank;
 
