@@ -20,15 +20,18 @@ public class Biblioteca {
 
     @Column(name = "nome")
     private String nome;
+
     @Column(name = "endereco")
     private String endereco;
+
     @Column(name = "telefone")
     private String telefone;
+
     @Column(name = "email")
     private String email;
 
 
-    @OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "biblioteca")
     private List<Secao> secaoList;
 
 
