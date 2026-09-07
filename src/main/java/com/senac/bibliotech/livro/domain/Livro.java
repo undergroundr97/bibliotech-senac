@@ -34,6 +34,7 @@ public class Livro {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
+
     public Livro(Long id, String titulo, String isbn) {
         this.id = id;
         this.titulo = titulo;

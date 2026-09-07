@@ -10,6 +10,9 @@ public record LivroRequest(
         String isbn,
         @Positive
         @NotNull
-        Long autorId
+        Long autorId,
+        @Positive
+        @NotNull
+        Long categoriaId
 ) {
 }

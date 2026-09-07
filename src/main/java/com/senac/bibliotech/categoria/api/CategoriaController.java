@@ -55,8 +55,8 @@ public class CategoriaController {
     @PatchMapping("/{id}")
     public ResponseEntity<CategoriaResponse> patchCategoria(@PathVariable Long id,
                                                             @Valid @RequestBody CategoriaPatchRequest categoriaPatchRequest){
-        return ResponseEntity.ok(categoriaService.patchCategoria(categoriaPatchRequest, id));
 
+        return ResponseEntity.ok(categoriaService.patchCategoria(categoriaPatchRequest, id));
     }
 
 }
