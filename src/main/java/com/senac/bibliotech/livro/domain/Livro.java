@@ -4,6 +4,8 @@ package com.senac.bibliotech.livro.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.senac.bibliotech.autor.domain.Autor;
 import com.senac.bibliotech.categoria.model.Categoria;
+import com.senac.bibliotech.secao.domain.Secao;
+import com.senac.bibliotech.secao.service.SecaoService;
 import jakarta.persistence.*;
 import lombok.Data;
 

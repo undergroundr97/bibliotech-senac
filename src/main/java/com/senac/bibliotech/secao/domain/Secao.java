@@ -3,11 +3,15 @@ package com.senac.bibliotech.secao.domain;
 
 import com.senac.bibliotech.livro.domain.Livro;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "secao")
+@Data
+@NoArgsConstructor
 public class Secao {
 
     @Id
