@@ -21,7 +21,7 @@ public class BibliotecaService {
         this.bibliotecaMapper = bibliotecaMapper;
     }
 
-    private Biblioteca findBibliotecaEntityById(Long id){
+    public Biblioteca findBibliotecaEntityById(Long id){
         return bibliotecaRepository.findById(id)
                 .orElseThrow();
     }

@@ -1,6 +1,8 @@
 package com.senac.bibliotech.secao.api.request;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 public record SecaoRequest(
         @NotBlank
@@ -8,6 +10,9 @@ public record SecaoRequest(
         @NotBlank
         String descricao,
         @NotBlank
-        String localizacao
+        String localizacao,
+        @Positive
+        @NotNull
+        Long bibliotecaId
 ) {
 }

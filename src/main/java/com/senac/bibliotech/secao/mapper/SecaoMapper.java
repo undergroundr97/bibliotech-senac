@@ -13,6 +13,7 @@ public interface SecaoMapper {
     SecaoResponse toResponse(Secao secao);
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "biblioteca", ignore = true)
     Secao createSecao(SecaoRequest secaoRequest);
 
 }
