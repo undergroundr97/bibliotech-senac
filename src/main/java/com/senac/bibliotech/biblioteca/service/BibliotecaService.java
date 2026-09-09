@@ -6,7 +6,9 @@ import com.senac.bibliotech.biblioteca.mapper.BibliotecaMapper;
 import com.senac.bibliotech.biblioteca.model.Biblioteca;
 import com.senac.bibliotech.biblioteca.repository.BibliotecaRepository;
 import com.senac.bibliotech.exceptions.customexceptions.BibliotecaNotFound;
+import com.senac.bibliotech.exceptions.customexceptions.ResourceNotFound;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class BibliotecaService {
 
     public Biblioteca findBibliotecaEntityById(Long id){
         return bibliotecaRepository.findById(id)
-                .orElseThrow( () -> new BibliotecaNotFound("Biblioteca with id: " + id + " not found."));
+                .orElseThrow( () -> new ResourceNotFound("Biblioteca with id: " + id + " not found."));
     }
 
     public BibliotecaResponse findBibliotecaById(Long id){

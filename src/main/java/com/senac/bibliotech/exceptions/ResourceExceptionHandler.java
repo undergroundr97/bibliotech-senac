@@ -15,7 +15,7 @@ import java.time.Instant;
 public class ResourceExceptionHandler {
 
     @ExceptionHandler(ResourceNotFound.class)
-    public ResponseEntity<StandardError> bibliotecaNotFound(BibliotecaNotFound e, HttpServletRequest request){
+    public ResponseEntity<StandardError> resourceNotFound(ResourceNotFound e, HttpServletRequest request){
         String error = "Resource Not Found.";
         HttpStatus status = HttpStatus.NOT_FOUND;
         StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(),
