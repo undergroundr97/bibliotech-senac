@@ -82,12 +82,12 @@ public class LivroService {
     }
 
 
-    public LivroResponse patchLivro(Long id, LivroPatchRequest livroPatchRequest){
+    public LivroResponse patchLivro(Long id, LivroPatchRequest livroPatchRequest) {
         Livro livro = findLivroEntityById(id);
-        if(livroPatchRequest.autorId() != null){
+        if (livroPatchRequest.autorId() != null) {
             livro.setAutor(autorService.findById(livroPatchRequest.autorId()));
         }
-        if(livroPatchRequest.categoriaId() != null){
+        if (livroPatchRequest.categoriaId() != null) {
             livro.setCategoria(categoriaService.findCategoriaEntityById(livroPatchRequest.categoriaId()));
         }
         livroMapper.patchLivro(livroPatchRequest, livro);
