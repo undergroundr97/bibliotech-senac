@@ -23,8 +23,20 @@ public class UsuarioService {
         this.usuarioMapper = usuarioMapper;
     }
 
-    public List<Usuario> findAll(){
-        return usuarioRepository.findAll();
+    public List<UsuarioResponse> findAll(){
+        List<UsuarioResponse> listUsuariosResponse =
+                usuarioRepository.findAll()
+                        .stream()
+                        .map(usuarioMapper::toResponse)
+                        .toList();
+
+        return listUsuariosResponse;
+    }
+
+    public UsuarioResponse findUsuarioById(Long id){
+        Usuario usuario = findUsuarioEntityById(id);
+
+        return usuarioMapper.toResponse(usuario);
     }
 
     public Usuario findUsuarioEntityById(Long id){
